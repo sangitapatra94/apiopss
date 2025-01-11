@@ -1,19 +1,18 @@
 openapi: 3.0.1
 info:
-  title: Test
+  title: Test_12345
   description: ''
   version: '1.0'
 servers:
-  - url: https://dev-apim-eus-1.azure-api.net
+  - url: https://dev-apim-eus-1.azure-api.net/test12345
 paths:
-  /testop:
+  /getdata:
     get:
-      summary: Tes-op
-      description: Tes-op
-      operationId: tes-op
+      summary: test12345
+      operationId: test12345
       responses:
         '200':
-          description: ''
+          description: 
 components:
   securitySchemes:
     apiKeyHeader:

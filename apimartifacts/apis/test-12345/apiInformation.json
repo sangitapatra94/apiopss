@@ -1,15 +1,14 @@
 {
   "properties": {
-    "path": "",
+    "path": "test12345",
     "apiRevision": "1",
     "authenticationSettings": {},
     "description": "",
     "isCurrent": true,
-    "displayName": "Test",
+    "displayName": "Test_12345",
     "protocols": [
       "https"
     ],
-    "serviceUrl": "https://dev-apim-eus-1.azure-api.net",
     "subscriptionKeyParameterNames": {
       "header": "Ocp-Apim-Subscription-Key",
       "query": "subscription-key"
