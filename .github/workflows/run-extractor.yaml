@@ -10,6 +10,10 @@ on:
         options:
         - Extract All APIs
         - configuration.extractor.yaml
+      CONFIGURATION_YAML_NAME:
+        description: 'Extraction configuration file anme'     
+        required: false
+        type: string
       API_SPECIFICATION_FORMAT:
         description: 'API Specification Format'     
         required: true
