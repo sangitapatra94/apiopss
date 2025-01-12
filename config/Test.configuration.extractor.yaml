@@ -1,0 +1,12 @@
+# Note: With the introduction of workspaces we recommend using workspaces with APIOps when possible to limit what can be extracted whenever possible. 
+# More information about workspaces can be found here https://learn.microsoft.com/en-us/azure/api-management/workspaces-overview
+
+ apiNames:
+  - test
+  - test_12345
+
+namedValueNames:
+  - test-namedvalue
+
+ productNames:
+  - Test
