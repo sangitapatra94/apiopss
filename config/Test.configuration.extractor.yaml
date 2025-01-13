@@ -3,7 +3,7 @@
 
  apiNames:
   - test
-  - test_12345
+  - test-12345
 
  namedValueNames:
   - test-namedvalue
