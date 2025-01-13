@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "displayName": "demoapi-namedvalue",
+    "secret": false,
+    "tags": [],
+    "value": "devdemoapi"
+  }
+}
