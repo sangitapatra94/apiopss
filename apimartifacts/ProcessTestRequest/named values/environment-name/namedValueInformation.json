@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "displayName": "environment-name",
+    "secret": false,
+    "tags": [],
+    "value": "Development"
+  }
+}
