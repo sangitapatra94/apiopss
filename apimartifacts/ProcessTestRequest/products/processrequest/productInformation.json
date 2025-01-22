@@ -1,9 +1,0 @@
-{
-  "properties": {
-    "displayName": "ProcessRequest",
-    "description": "ProcessRequest",
-    "approvalRequired": false,
-    "state": "published",
-    "subscriptionRequired": true
-  }
-}
