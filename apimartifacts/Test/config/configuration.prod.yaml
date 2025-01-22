@@ -1,6 +1,0 @@
-apimServiceName: dev-apim-eus
-namedValues:
-  - name: test-namedvalue
-    properties:
-      displayName: test-namedvalue
-      value: "prodvalue"
