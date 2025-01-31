@@ -1,0 +1,6 @@
+apimServiceName: dev-apim-eus
+namedValues:
+  - name: environment-name
+    properties:
+      displayName: environment-name
+      value: "Production"
