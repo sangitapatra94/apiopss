@@ -1,0 +1,65 @@
+name: Run Postman Tests
+
+on:
+  workflow_call:
+    inputs:
+      collection_path:
+        type: string
+        description: 'Path to the Postman collection file'
+      environment_path:
+        type: string
+        description: 'Path to the Postman environment file'
+      folders:
+        type: string
+        description: 'Comma-separated list of folders to run in the Postman collection'
+
+jobs:
+  setup-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Specify the Node.js version
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          npm install -g newman  # Install Newman globally
+          npm install           # Install dependencies if necessary
+
+      # Run Postman tests and capture output in JSON format
+      - name: Run Postman tests
+        id: postman_tests
+        run: |
+          echo "Running Postman tests for environment: ${{ inputs.environment_path }}"
+          
+          folders=$(echo "${{ inputs.folders }}" | tr "," "\n")  # Convert comma-separated folders into a list
+          newman_output_file="newman_output.json"
+
+          # Loop through folders and execute tests
+          for folder in $folders; do
+            newman run ${{ inputs.collection_path }} -e ${{ inputs.environment_path }} --folder "$folder" -r json --reporter-json-export $newman_output_file
+          done
+
+          # Parse JSON to calculate success percentage
+          total_tests=$(jq '.run.stats.total' $newman_output_file)
+          failed_tests=$(jq '.run.stats.failures' $newman_output_file)
+          passed_tests=$((total_tests - failed_tests))
+          success_percentage=$((100 * passed_tests / total_tests))
+
+          # Echo total and passed tests for debugging purposes
+          echo "Total Tests: $total_tests"
+          echo "Passed Tests: $passed_tests"
+          echo "Failed Tests: $failed_tests"
+          echo "Success Percentage: $success_percentage%"
+
+          # GitHub Actions annotations for success percentage in the UI
+          echo "::notice::Success Percentage: $success_percentage%"  # Using ::notice annotation for success percentage display
+          
+          # Save success percentage as output for the next steps
+          echo "::set-output name=success_percentage::$success_percentage"
+          
+    outputs:
+      success_percentage: ${{ steps.postman_tests.outputs.success_percentage }}
