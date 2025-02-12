@@ -1,0 +1,9 @@
+{
+  "properties": {
+    "displayName": "swagger-petstore",
+    "description": "For testing",
+    "approvalRequired": false,
+    "state": "notPublished",
+    "subscriptionRequired": true
+  }
+}
