@@ -59,8 +59,8 @@ jobs:
     if: ${{ needs.get-commit.result == 'success' && (needs.Push-Changes-To-APIM-Dev-With-Commit-ID.result == 'success' || needs.Push-Changes-To-APIM-Dev-Without-Commit-ID.result == 'success') }}
     uses: ./.github/workflows/run-postman-tests.yaml
     with:
-      collection_path: path/to/your/collection.json  # Provide the path to your collection
-      environment_path: path/to/your/environment.json  # Provide the path to your environment file
+      collection_path: ./postman-collection/postmanCollection.json  # Provide the path to your collection
+      environment_path: ./postman-collection/Environment.json  # Provide the path to your environment file
       folders: "Safe,Unsafe"  # Specify the folders to execute (for non-production)
       
   Push-Changes-To-APIM-Prod-With-Commit-ID:

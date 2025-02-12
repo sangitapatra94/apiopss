@@ -1,0 +1,51 @@
+{
+    "info": {
+      "name": "My API Collection",
+      "description": "A collection of API tests",
+      "_postman_id": "1234abcd-5678-efgh-9101-ijklmnopqrst",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Get User",
+        "request": {
+          "method": "GET",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "url": {
+            "raw": "https://api.example.com/user/{{userId}}",
+            "host": ["https://api.example.com"],
+            "path": ["user", "{{userId}}"]
+          }
+        },
+        "response": []
+      },
+      {
+        "name": "Create User",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"name\": \"John\", \"age\": 30}"
+          },
+          "url": {
+            "raw": "https://api.example.com/user",
+            "host": ["https://api.example.com"],
+            "path": ["user"]
+          }
+        },
+        "response": []
+      }
+    ]
+  }
+  
