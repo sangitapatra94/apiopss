@@ -52,7 +52,16 @@ jobs:
       API_MANAGEMENT_ENVIRONMENT: dev # change this to match the dev environment created in settings
       API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: apimartifacts/${{ github.event.inputs.ARTIFACT_NAME }} # change this to the artifacts folder
     secrets: inherit
-    
+   
+  check-status:
+    needs: [get-commit, Push-Changes-To-APIM-Dev-With-Commit-ID, Push-Changes-To-APIM-Dev-Without-Commit-ID]
+    runs-on: ubuntu-latest
+    steps:
+      - name: checking status
+        run: |
+          echo "get-commit: ${{ needs.get-commit.result }}"
+          echo "Push-Changes-To-APIM-Dev-With-Commit-ID: ${{ needs.Push-Changes-To-APIM-Dev-With-Commit-ID.result }}"
+          echo "Push-Changes-To-APIM-Dev-Without-Commit-ID: ${{ needs.Push-Changes-To-APIM-Dev-Without-Commit-ID.result }}"
   # Add a combined step for Node.js setup, installing dependencies, and running Postman tests
   Run-TestCase-For-Dev:
     needs: [get-commit, Push-Changes-To-APIM-Dev-With-Commit-ID, Push-Changes-To-APIM-Dev-Without-Commit-ID]
