@@ -54,14 +54,14 @@ jobs:
     secrets: inherit
    
   check-status:
-    needs: [get-commit, Push-Changes-To-APIM-Dev-With-Commit-ID, Push-Changes-To-APIM-Dev-Without-Commit-ID]
+    needs: [get-commit, Push-Changes-To-APIM-Dev-With-Commit-ID]
     runs-on: ubuntu-latest
     steps:
       - name: checking status
         run: |
           echo "get-commit: ${{ needs.get-commit.result }}"
           echo "Push-Changes-To-APIM-Dev-With-Commit-ID: ${{ needs.Push-Changes-To-APIM-Dev-With-Commit-ID.result }}"
-          echo "Push-Changes-To-APIM-Dev-Without-Commit-ID: ${{ needs.Push-Changes-To-APIM-Dev-Without-Commit-ID.result }}"
+          echo "Push-Changes-To-APIM-Dev-Without-Commit-ID: ${{ github.job.Push-Changes-To-APIM-Dev-Without-Commit-ID.result }}"
   # Add a combined step for Node.js setup, installing dependencies, and running Postman tests
   Run-TestCase-For-Dev:
     needs: [get-commit]
