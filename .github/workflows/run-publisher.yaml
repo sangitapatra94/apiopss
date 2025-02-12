@@ -61,11 +61,11 @@ jobs:
         run: |
           echo "get-commit: ${{ needs.get-commit.result }}"
           echo "Push-Changes-To-APIM-Dev-With-Commit-ID: ${{ needs.Push-Changes-To-APIM-Dev-With-Commit-ID.result }}"
-          echo "Push-Changes-To-APIM-Dev-Without-Commit-ID: ${{ needs.Push-Changes-To-APIM-Dev-Without-Commit-ID.result }}"
+
   # Add a combined step for Node.js setup, installing dependencies, and running Postman tests
   Run-TestCase-For-Dev:
-    needs: [get-commit, Push-Changes-To-APIM-Dev-With-Commit-ID, Push-Changes-To-APIM-Dev-Without-Commit-ID]
-    if: ( ${{ needs.get-commit.result }} == 'success') && (${{ needs.Push-Changes-To-APIM-Dev-With-Commit-ID.result }} == 'success' || ${{ needs.Push-Changes-To-APIM-Dev-Without-Commit-ID.result }} == 'success')
+    needs: [get-commit]
+    if: ( ${{ needs.get-commit.result }} == 'success') && (${{ github.job.Push-Changes-To-APIM-Dev-With-Commit-ID.result }} == 'success' || ${{ github.job.Push-Changes-To-APIM-Dev-Without-Commit-ID.result }} == 'success')
     uses: ./.github/workflows/run-postman-tests.yaml
     with:
       collection_path: ./postman-collection/postmanCollection.json  # Provide the path to your collection
