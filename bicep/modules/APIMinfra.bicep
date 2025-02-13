@@ -1,3 +1,4 @@
+targetScope = 'resourceGroup'  
 param apiManagementName string
 param location string = 'East US'
 param publisherEmail string
