@@ -33,7 +33,6 @@ jobs:
       run: |
         az deployment sub create \
           --location EastUS \
-          --resource-group komatsu-poc \
           --template-file ./bicep/modules/APIMinfra.bicep \
           --parameters apiManagementName=my-apim-instance \
                        publisherEmail="souvikg90@gmail.com" \
