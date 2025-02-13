@@ -34,7 +34,7 @@ jobs:
         az deployment group create \
           --resource-group komatsu-poc \
           --template-file ./bicep/modules/APIMinfra.bicep \
-          --parameters apiManagementName=my-apim-instance \
+          --parameters apiManagementName=t-apim-kx \
                        publisherEmail="souvikg90@gmail.com" \
                        publisherName="Souvik"
 
