@@ -31,8 +31,8 @@ jobs:
 
     - name: Deploy APIM using Bicep
       run: |
-        az deployment sub create \
-          --location EastUS \
+        az deployment group create \
+          --resource-group komatsu-poc \
           --template-file ./bicep/modules/APIMinfra.bicep \
           --parameters apiManagementName=my-apim-instance \
                        publisherEmail="souvikg90@gmail.com" \
