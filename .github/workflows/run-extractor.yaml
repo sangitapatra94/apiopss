@@ -69,13 +69,10 @@ jobs:
           elseif ("${{ runner.os }}" -like "*mac*" -and "${{ runner.arch }}" -like "*x86_64*") {
             $releaseFileName = "extractor-osx-x64.zip"
           }
-          echo $releaseFileName
-          echo $executableFileName
+
           Write-Information "Downloading release..."
-          $uri = "https://github.com/Azure/apim/releases/download/${{ env.apim_release_version }}/$releaseFileName"
+          $uri = "https://github.com/Azure/apiops/releases/download/${{ env.apiops_release_version }}/$releaseFileName"
           $downloadFilePath = Join-Path "${{ runner.temp }}" $releaseFileName
-          echo $downloadFilePath
-          echo "URI: $uri"
           Invoke-WebRequest -Uri "$uri" -OutFile "$downloadFilePath"
 
           Write-Information "Extracting release..."
