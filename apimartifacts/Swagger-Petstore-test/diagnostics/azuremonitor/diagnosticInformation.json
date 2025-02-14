@@ -1,0 +1,34 @@
+{
+  "properties": {
+    "loggerId": "/subscriptions/56a35543-54ea-40cf-9231-f5276f74ab63/resourceGroups/komatsu-poc/providers/Microsoft.ApiManagement/service/APIM-kx-test/loggers/azuremonitor",
+    "backend": {
+      "request": {
+        "dataMasking": {
+          "queryParams": [
+            {
+              "mode": "Hide",
+              "value": "*"
+            }
+          ]
+        }
+      }
+    },
+    "frontend": {
+      "request": {
+        "dataMasking": {
+          "queryParams": [
+            {
+              "mode": "Hide",
+              "value": "*"
+            }
+          ]
+        }
+      }
+    },
+    "logClientIp": true,
+    "sampling": {
+      "percentage": 100,
+      "samplingType": "fixed"
+    }
+  }
+}
